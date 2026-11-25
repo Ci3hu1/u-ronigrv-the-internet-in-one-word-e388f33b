@@ -16,6 +16,18 @@
 - 26 Nov 2026 ~06:35 WIB: repo created (after opening), v1 built in a
   fresh in-window session. main.py + tests + STRATEGY.md + README + LICENSE.
 - Kit: fresh download, u-ronigrv-the-internet-in-one-word-e388f33b-kit.
+- 26 Nov 2026 ~06:38 WIB: pushed commit
+  dc6ea45d3f942b5f0a6f25694ed7e95d656203b6 (main). Repo About set
+  (website = bounty page; topics makefun, ai-agents, bounties, growth).
+- Local verify: python3 main.py writes exactly b'Receipts' (8 bytes);
+  4/4 unit tests pass; stdlib only.
+- Kit check (no transcripts): 4 pass (competition_open, snapshot 6 files /
+  9,371 bytes, license_osi MIT, entrypoint main.py python3.13), 1 fail
+  (transcripts_present — no bundle yet), 14 skipped, 5 at-submission.
+- Bundle --dry-run: 11 Muse app sessions found, 0 usage rows attached.
+  NOT bundled for real — parent re-bundles with --muse-usage after this
+  subagent run completes (its usage row is written only then).
+  Pre-opening sessions correctly left out (thinking_in_window).
 
 ## Live score / rank
 
