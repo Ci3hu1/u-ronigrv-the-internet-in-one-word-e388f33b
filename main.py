@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""The Internet in One Word — v2 entry.
+"""The Internet in One Word — v3 entry.
 
-Writes one word to /output/entry.txt: "Groupchat".
+Writes one word to /output/entry.txt: "Ghosted".
 
 Pure standard library. Deterministic: the same word on every run, no
 input, no randomness, no network. The gate: /output/entry.txt must be
@@ -11,7 +11,7 @@ UTF-8 text of 1 to 30 characters, not only white space.
 import os
 import sys
 
-WORD = "Groupchat"
+WORD = "Ghosted"
 
 GATE_MIN = 1
 GATE_MAX = 30

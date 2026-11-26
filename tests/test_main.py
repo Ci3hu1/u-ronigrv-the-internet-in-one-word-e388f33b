@@ -1,4 +1,4 @@
-"""Tests for the v2 one-word entry: main.py must write exactly "Groupchat"
+"""Tests for the v3 one-word entry: main.py must write exactly "Ghosted"
 to entry.txt, inside the gate (UTF-8, 1-30 chars, not only whitespace),
 deterministically across runs, with no trailing newline. Pure stdlib.
 """
@@ -11,7 +11,7 @@ import unittest
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MAIN = os.path.join(REPO_ROOT, "main.py")
-WORD = "Groupchat"
+WORD = "Ghosted"
 
 
 def run_entry(out_dir, argv_extra=None):
@@ -25,8 +25,8 @@ def read_entry_bytes(path):
         return handle.read()
 
 
-class TestGroupchatEntry(unittest.TestCase):
-    def test_writes_exactly_groupchat(self):
+class TestGhostedEntry(unittest.TestCase):
+    def test_writes_exactly_ghosted(self):
         with tempfile.TemporaryDirectory() as tmp:
             proc = run_entry(tmp)
             self.assertEqual(proc.returncode, 0, proc.stderr)
@@ -40,7 +40,7 @@ class TestGroupchatEntry(unittest.TestCase):
             run_entry(tmp)
             raw = read_entry_bytes(os.path.join(tmp, "entry.txt"))
             self.assertFalse(raw.endswith(b"\n"))
-            self.assertEqual(raw, b"Groupchat")
+            self.assertEqual(raw, b"Ghosted")
 
     def test_inside_gate(self):
         self.assertTrue(1 <= len(WORD) <= 30)
@@ -50,7 +50,7 @@ class TestGroupchatEntry(unittest.TestCase):
     def test_single_word(self):
         self.assertEqual(len(WORD.split()), 1)
         self.assertNotIn(" ", WORD)
-        self.assertEqual(WORD, "Groupchat")
+        self.assertEqual(WORD, "Ghosted")
 
     def test_argv_path_override(self):
         with tempfile.TemporaryDirectory() as tmp:

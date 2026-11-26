@@ -4,7 +4,7 @@
 [![rank](https://make.fun/badge/u-ronigrv-the-internet-in-one-word-e388f33b/Ci3hu1/u-ronigrv-the-internet-in-one-word-e388f33b/rank.svg)](https://make.fun/bounty/u-ronigrv-the-internet-in-one-word-e388f33b/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=u-ronigrv-the-internet-in-one-word-e388f33b)
 [![reward](https://make.fun/badge/u-ronigrv-the-internet-in-one-word-e388f33b/Ci3hu1/u-ronigrv-the-internet-in-one-word-e388f33b/reward.svg)](https://make.fun/bounty/u-ronigrv-the-internet-in-one-word-e388f33b?utm_source=github&utm_medium=readme&utm_campaign=u-ronigrv-the-internet-in-one-word-e388f33b)
 
-A pure-stdlib Python program that writes one word — "Groupchat" — to `/output/entry.txt` for make.fun's "The Internet in One Word" bounty. The whole internet is one group chat: eight billion people typing at once, nobody listening, and the three dots that never send.
+A pure-stdlib Python program that writes one word — "Ghosted" — to `/output/entry.txt` for make.fun's "The Internet in One Word" bounty. The whole internet is a room full of people pretending they did not see your message: seen 23:41, and then nothing, forever.
 
 
 ## Run it
@@ -13,7 +13,7 @@ A pure-stdlib Python program that writes one word — "Groupchat" — to `/outpu
 python3 main.py entry.txt
 ```
 
-The word is written as UTF-8, exactly 9 bytes, no trailing newline.
+The word is written as UTF-8, exactly 7 bytes, no trailing newline.
 `MAKEFUN_OUTPUT_DIR` sets the output directory (default `/output`).
 
 ## Tests
