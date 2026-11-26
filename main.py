@@ -1,31 +1,51 @@
 #!/usr/bin/env python3
-"""The Internet in One Word entry.
+"""The Internet in One Word — v2 entry.
 
-Writes one word to /output/entry.txt: "Receipts".
+Writes one word to /output/entry.txt: "Groupchat".
 
-Pure standard library. Deterministic: the same word every run.
-The gate: /output/entry.txt must be UTF-8 text of 1 to 30 characters,
-not only white space.
+Pure standard library. Deterministic: the same word on every run, no
+input, no randomness, no network. The gate: /output/entry.txt must be
+UTF-8 text of 1 to 30 characters, not only white space.
 """
 
 import os
 import sys
 
-WORD = "Receipts"
+WORD = "Groupchat"
+
+GATE_MIN = 1
+GATE_MAX = 30
 
 
-def main() -> None:
-    if not 1 <= len(WORD) <= 30 or not WORD.strip():
+def check_word(word):
+    """Raise SystemExit unless word fits the 1-30 char, non-blank gate."""
+    if not GATE_MIN <= len(word) <= GATE_MAX:
         raise SystemExit(
-            f"word is {len(WORD)} characters, outside the 1-30 gate"
+            "word is %d characters, outside the 1-%d gate" % (len(word), GATE_MAX)
         )
-    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
-    path = sys.argv[1] if len(sys.argv) > 1 else os.path.join(out_dir, "entry.txt")
+    if not word.strip():
+        raise SystemExit("word is only white space, outside the gate")
+
+
+def resolve_output(argv, env):
+    """Where entry.txt goes: argv[1], else MAKEFUN_OUTPUT_DIR/entry.txt."""
+    if len(argv) > 1:
+        return argv[1]
+    return os.path.join(env.get("MAKEFUN_OUTPUT_DIR", "/output"), "entry.txt")
+
+
+def write_word(word, path):
+    """Write word as UTF-8, no trailing newline, creating parents."""
     parent = os.path.dirname(path)
     if parent:
         os.makedirs(parent, exist_ok=True)
-    with open(path, "w", encoding="utf-8", newline="") as f:
-        f.write(WORD)
+    with open(path, "w", encoding="utf-8", newline="") as handle:
+        handle.write(word)
+
+
+def main():
+    check_word(WORD)
+    write_word(WORD, resolve_output(sys.argv, os.environ))
 
 
 if __name__ == "__main__":
