@@ -143,3 +143,27 @@
   v3 built for Joni's 'Setuju' BEFORE submit — do NOT submit without it.
 - v1/v2 claim files untouched; v3 gets its own versioned claim file
   only AFTER submit.
+
+## v3 kit check + push (26 Nov 2026 ~19:40 WIB)
+
+- Commit: f603981 "The Internet in One Word v3: Ghosted" (5 files,
+  +142/-53). Local HEAD verified.
+- Kit check (commit f603981, NO transcripts — parent re-bundles with
+  --muse-usage after this run, as with v1/v2): **4 pass / 1 fail /
+  14 skip / 5 at-submission**. Pass: competition_open (open until
+  27 Nov 00:15 WIB), snapshot (6 files / 21,897 bytes), license_osi
+  (MIT), entrypoint (main.py, python3.13). **FAIL: transcripts_present
+  only** — no bundle yet, expected. Skip: strategy_note,
+  committed_secret, all transcript/thinking checks (no session parsed).
+  At submission (server-verified): repo_public, repo_owner,
+  repo_created_after_open, commit_in_repo, duplicate_snapshot.
+- **PUSH FAILED 3x — commit NOT on remote.** `git push origin main`:
+  "error: RPC failed; curl 56 Connection died, tried 5 times before
+  giving up / send-pack: unexpected disconnect while reading sideband
+  packet / fatal: the remote end hung up unexpectedly". Same transient
+  failure as v2 (resolved on parent retry ~25 min later). Verified via
+  `gh api .../git/refs/heads/main`: remote HEAD is still
+  3f48468bb2c23718a34b181cc48db9f7c6fa7a7d (v2). **Parent must retry
+  the push before submit** — commit_in_repo requires f603981 pushed.
+- NOT submitted. Awaiting Joni's 'Setuju' on v3 'Ghosted' before submit.
+  R3/final cutoff 27 Nov 00:15 WIB.
